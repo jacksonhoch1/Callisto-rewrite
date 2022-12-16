@@ -6,6 +6,7 @@ package frc.robot;
 
 //import Library things
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 
 //import utilities
@@ -33,13 +34,16 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
 
-  private Chassis m_chassis = new Chassis();
-  private Climber m_climber = new Climber();
-  private Indexer m_indexer = new Indexer();
-  private Intake m_intake = new Intake();
-  private Shooter m_shooter = new Shooter();
+  private final Chassis m_chassis = new Chassis();
+  private final Climber m_climber = new Climber();
+  private final Indexer m_indexer = new Indexer();
+  private final Intake m_intake = new Intake();
+  private final Shooter m_shooter = new Shooter();
 
-  private AllRobotSubsystems m_allRobotSubsystems = new AllRobotSubsystems(m_chassis, m_climber, m_indexer, m_intake, m_shooter);
+  private final AllRobotSubsystems m_allRobotSubsystems = new AllRobotSubsystems(m_chassis, m_climber, m_indexer, m_intake, m_shooter);
+
+  private final Joystick m_gamepadDriver = new Joystick(IDMap.Button2p.DRIVER_GAMEPAD.ID);
+  private final Joystick m_gamepadOperator = new Joystick(IDMap.Button2p.OPERATOR_GAMEPAD.ID);
 
 
   public RobotContainer() {

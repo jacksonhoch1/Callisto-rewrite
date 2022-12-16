@@ -39,73 +39,73 @@ public class IDMap {
         private CAN(int id) {
             ID = id;
         }
+    }
 
-        /**Button and gamepad ids for 2 player controls*/
-        public enum Button2p {
-            //Gamepads
-            DRIVER_GAMEPAD (0),
-            OPERATOR_GAMEPAD (1),
+    /**Button and gamepad ids for 2 player controls*/
+    public enum Button2p {
+        //Gamepads
+        DRIVER_GAMEPAD (0),
+        OPERATOR_GAMEPAD (1),
 
-            //Driver
-            ARCADE_THROTTLE_CHANNEL (1),
-            ARCADE_ROTATION_CHANNEL(2),
+        //Driver
+        ARCADE_THROTTLE_CHANNEL (1),
+        ARCADE_ROTATION_CHANNEL(2),
 
-            SPEED_SHIFT_UP (5),
-            SPEED_SHIFT_DOWN (7),
+        SPEED_SHIFT_UP (5),
+        SPEED_SHIFT_DOWN (7),
 
-            //Operator
-            INTAKE_DEPLOY (8),
-            INTAKE_RETRACT (6),
-            INTAKE_OFF (3),
-            INTAKE_REVERSE (4),
+        //Operator
+        INTAKE_DEPLOY (8),
+        INTAKE_RETRACT (6),
+        INTAKE_OFF (3),
+        INTAKE_REVERSE (4),
 
-            INDEXER_OFF (2),
-            INDEXER_REVERSE (1),
+        INDEXER_OFF (2),
+        INDEXER_REVERSE (1),
 
-            SHOOTER_SHIFT_UP (0),           //POV button
-            SHOOTER_SHIFT_DOWN (180),       //POV button
-            READY_SHOOTER (9),
-            SHOOT (7),
-            STOP_SHOOTER ( 14),
+        SHOOTER_SHIFT_UP (0),           //POV button
+        SHOOTER_SHIFT_DOWN (180),       //POV button
+        READY_SHOOTER (9),
+        SHOOT (7),
+        STOP_SHOOTER ( 14),
 
-            CLIMBER_CHANNEL (1);
+        CLIMBER_CHANNEL (1);
 
-            public int ID;
-            private Button2p(int id) {
-                ID = id;
-            }
+        public int ID;
+        private Button2p(int id) {
+            ID = id;
         }
+    }
 
-        /**Button bindings for 1 player controls */
-        public enum Button1p {
-            //Gamepads
-            DRIVER_GAMEPAD (0),
+    /**Button bindings for 1 player controls */
+    public enum Button1p {
+        //Gamepads
+        DRIVER_GAMEPAD (0),
 
-            //Buttons
-            ARCADE_THROTTLE_CHANNEL (1),
-            ARCADE_ROTATION_CHANNEL (2),
+        //Buttons
+        ARCADE_THROTTLE_CHANNEL (1),
+        ARCADE_ROTATION_CHANNEL (2),
 
-            SPEED_SHIFT_UP (10),
-            SPEED_SHIFT_DOWN (9),
+        SPEED_SHIFT_UP (10),
+        SPEED_SHIFT_DOWN (9),
 
-            RUN_INTAKE (7),
-            RUN_INTAKE_REVERSE (5),
-            STOP_INTAKE (3),
+        RUN_INTAKE (7),
+        RUN_INTAKE_REVERSE (5),
+        STOP_INTAKE (3),
 
-            SHOOTER_SHIFT_UP (0),           //POV button
-            SHOOTER_SHIFT_DOWN (180),       //POV button
-            SHOOT (8),
-            STOP_SHOOTER (1),
+        SHOOTER_SHIFT_UP (0),           //POV button
+        SHOOTER_SHIFT_DOWN (180),       //POV button
+        SHOOT (8),
+        STOP_SHOOTER (1),
 
-            CLIMBER_EXTEND (2),
-            CLIMBER_RETRACT (4);
+        CLIMBER_EXTEND (2),
+        CLIMBER_RETRACT (4);
 
 
 
-            public int ID;
-            private Button1p(int id) {
-                ID = id;
-            }
+        public int ID;
+        private Button1p(int id) {
+            ID = id;
         }
     }
 }
