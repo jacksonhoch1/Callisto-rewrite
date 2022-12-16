@@ -39,7 +39,7 @@ public class RobotContainer {
   private Intake m_intake = new Intake();
   private Shooter m_shooter = new Shooter();
 
-  private AllRobotSubsystems s = new AllRobotSubsystems(m_chassis, m_climber, m_indexer, m_intake, m_shooter);
+  private AllRobotSubsystems m_allRobotSubsystems = new AllRobotSubsystems(m_chassis, m_climber, m_indexer, m_intake, m_shooter);
 
 
   public RobotContainer() {
