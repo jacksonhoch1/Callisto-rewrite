@@ -34,7 +34,7 @@ public class Intake extends SubsystemBase {
     m_intakeMotor = new WPI_TalonFX(IDMap.CAN.FEEDER.ID);
     m_intakeMotor.configFactoryDefault();
     m_intakeMotor.configAllSettings(configs);
-    m_intakeMotor.setInverted(TalonFXInvertType.Clockwise);
+    m_intakeMotor.setInverted(TalonFXInvertType.CounterClockwise);
 
     //intake solenoid
     m_intakeSolenoid = new DoubleSolenoid(PneumaticsModuleType.REVPH, IDMap.CAN.INTAKE_DEPLOY.ID, IDMap.CAN.INTAKE_RETRACT.ID);
