@@ -13,7 +13,18 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-    //Chassis
+    //Default motor Speeds
     public static final double HIGH_SPEED = 1.0;
     public static final double LOW_SPEED = 0.2;
+
+    public static final double THROTTLE_MODIFIER = 1.0;
+    public static final double TURN_LIMITER = 1.0;
+
+    public static final double FEEDER_SPEED = 1.0;
+    public static final double FEEDER_REVERSE_SPEED = -0.2;
+
+    public static final double SHOOTER_SPEED = 0.35;
+
+    public static final double INDEXER_SPEED = 0.5;
+    public static final double INDEXER_REVERSE_SPEED = -0.2;
 }

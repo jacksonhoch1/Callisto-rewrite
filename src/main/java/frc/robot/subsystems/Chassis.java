@@ -29,8 +29,8 @@ public class Chassis extends SubsystemBase {
   DifferentialDrive differentialDrive;
   AHRS m_gyro;
 
-  public double throttleModifier = 0.9;
-  public double turnModifier = 0.5;
+  public double throttleModifier = Constants.THROTTLE_MODIFIER;
+  public double turnModifier = Constants.TURN_MODIFIER;
   /** Creates a new Chassis. */
   public Chassis() {
     //TalonFX setup
