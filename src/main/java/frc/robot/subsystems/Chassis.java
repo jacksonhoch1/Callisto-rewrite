@@ -4,17 +4,12 @@
 
 package frc.robot.subsystems;
 
-//vendor libraries
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
-import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.TalonFXInvertType;
-import com.ctre.phoenix.motorcontrol.can.TalonFXConfiguration;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+//robot files
+import frc.robot.utils.IDMap;
+import frc.robot.utils.Dashboard;
+import frc.robot.Constants;
 
-import com.kauailabs.navx.frc.AHRS;
-
-
-//wpi libraries
+//wpilib
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -24,10 +19,16 @@ import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.wpilibj.SPI;
 
-//utils
-import frc.robot.utils.IDMap;
-import frc.robot.utils.Dashboard;
-import frc.robot.Constants;
+//vendor libraries
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.TalonFXInvertType;
+import com.ctre.phoenix.motorcontrol.can.TalonFXConfiguration;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+import com.kauailabs.navx.frc.AHRS;
+
+
+
 
 public class Chassis extends SubsystemBase {
   WPI_TalonFX m_leftFront, m_leftRear, m_rightFront, m_rightRear;

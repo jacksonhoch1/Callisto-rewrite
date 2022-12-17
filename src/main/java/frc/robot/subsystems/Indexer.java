@@ -9,7 +9,7 @@ package frc.robot.subsystems;
 import frc.robot.utils.IDMap;
 import frc.robot.utils.Dashboard;
 
-//wpi libraries
+//wpilib
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 //vendor libraries
