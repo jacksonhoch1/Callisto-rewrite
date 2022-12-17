@@ -51,6 +51,24 @@ public class Shooter extends SubsystemBase {
     m_leftShooter.set(speed);
   }
 
+  public void shooterShift(boolean direction) {
+    if (direction) {
+      m_shooterSpeedsPointer = (m_shooterSpeedsPointer + 1) % m_shooterSpeeds.length;
+    }
+    else {
+      m_shooterSpeedsPointer = (m_shooterSpeedsPointer - 1) % m_shooterSpeeds.length;
+    }
+  }
+
+  public double getShooterSpeed() {
+    return m_shooterSpeeds[m_shooterSpeedsPointer];
+  }
+
+  //feeder methods
+  public void setFeeder(double speed) {
+    m_feeder.set(speed);
+  }
+
 
 
   @Override
