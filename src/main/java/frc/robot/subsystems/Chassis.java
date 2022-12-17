@@ -67,6 +67,8 @@ public class Chassis extends SubsystemBase {
     m_rightRear.setInverted(TalonFXInvertType.FollowMaster);
     m_rightRear.setNeutralMode(NeutralMode.Brake);
 
+    resetEncoders();
+
 
     //Gyro setup
     m_gyro = new AHRS(SPI.Port.kMXP);

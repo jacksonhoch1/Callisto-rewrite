@@ -18,7 +18,7 @@ public final class Constants {
     public static final double LOW_SPEED = 0.2;
 
     public static final double THROTTLE_MODIFIER = 1.0;
-    public static final double TURN_LIMITER = 1.0;
+    public static final double TURN_MODIFIER = 1.0;
 
     public static final double FEEDER_SPEED = 1.0;
     public static final double FEEDER_REVERSE_SPEED = -0.2;
