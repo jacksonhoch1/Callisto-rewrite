@@ -31,6 +31,9 @@ public class IDMap {
         INTAKE (3),         //TalonFX
         INTAKE_PH (1),      //Pneumatics Hub
 
+        INTAKE_DEPLOY (3),  //not CAN id, but solenoid position on PH
+        INTAKE_RETRACT (4), //not CAN id, but solenoid position on PH
+
         //Shooter
         SHOOTER_LEFT (6),   //TalonFX
         SHOOTER_RIGHT (61); //TalonFX
