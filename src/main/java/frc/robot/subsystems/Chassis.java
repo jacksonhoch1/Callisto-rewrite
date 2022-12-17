@@ -21,6 +21,7 @@ import edu.wpi.first.wpilibj.SPI;
 
 //utils
 import frc.robot.utils.IDMap;
+import frc.robot.utils.Dashboard;
 
 public class Chassis extends SubsystemBase {
   WPI_TalonFX m_leftFront, m_leftRear, m_rightFront, m_rightRear;
@@ -67,6 +68,8 @@ public class Chassis extends SubsystemBase {
     m_gyro = new AHRS(SPI.Port.kMXP);
     m_gyro.reset();
 
+    
+
 
     //differential drive setup
     m_differentialDrive = new DifferentialDrive(m_leftFront, m_rightFront);
@@ -75,5 +78,16 @@ public class Chassis extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    Dashboard.GYRO_POSITION.put(getDegrees());
+
+  }
+
+  //Gyro methods
+  public double getDegrees() {
+    return Math.IEEEremainder(m_gyro.getAngle(), 360);
+  }
+
+  public void resetGyro() {
+    m_gyro.reset();
   }
 }
