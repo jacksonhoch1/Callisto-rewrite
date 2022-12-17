@@ -22,11 +22,15 @@ import edu.wpi.first.wpilibj.SPI;
 //utils
 import frc.robot.utils.IDMap;
 import frc.robot.utils.Dashboard;
+import frc.robot.Constants;
 
 public class Chassis extends SubsystemBase {
   WPI_TalonFX m_leftFront, m_leftRear, m_rightFront, m_rightRear;
-  DifferentialDrive m_differentialDrive;
+  DifferentialDrive differentialDrive;
   AHRS m_gyro;
+
+  public double throttleModifier = 0.9;
+  public double turnModifier = 0.5;
   /** Creates a new Chassis. */
   public Chassis() {
     //TalonFX setup
@@ -72,7 +76,7 @@ public class Chassis extends SubsystemBase {
 
 
     //differential drive setup
-    m_differentialDrive = new DifferentialDrive(m_leftFront, m_rightFront);
+    this.differentialDrive = new DifferentialDrive(m_leftFront, m_rightFront);
   }
 
   @Override
@@ -80,6 +84,36 @@ public class Chassis extends SubsystemBase {
     // This method will be called once per scheduler run
     Dashboard.GYRO_POSITION.put(getDegrees());
 
+  }
+
+  //Drive methods
+  public void arcadeDrive(double xAxisSpeed, double zAxisRotation) {
+    this.differentialDrive.arcadeDrive(throttleModifier * xAxisSpeed, turnModifier * zAxisRotation);
+  }
+
+  public void setThrottleModifier(double throttleModifier) {
+    this.throttleModifier = throttleModifier;
+  }
+
+  public void setTurnModifier(double turnModifier) {
+    this.turnModifier = turnModifier;
+  }
+
+  public void setMaxOutput(double maxOutput) {
+    this.differentialDrive.setMaxOutput(maxOutput);
+  }
+
+  public void resetEncoders() {
+    m_leftFront.setSelectedSensorPosition(0);
+    m_rightFront.setSelectedSensorPosition(0);
+  }
+
+  public void shiftUp() {
+    this.differentialDrive.setMaxOutput(Constants.HIGH_SPEED);
+  }
+
+  public void shiftDown() {
+    this.differentialDrive.setMaxOutput(Constants.LOW_SPEED);
   }
 
   //Gyro methods
