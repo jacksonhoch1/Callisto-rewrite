@@ -13,7 +13,8 @@ public class Dashboard {
         INTAKE_POSITION = Entry.getBooleanEntry("Intake Position", false);
     
     public static final Entry<Double>
-        GYRO_POSITION = Entry.getDoubleEntry("Gyro Value", 0);
+        GYRO_POSITION = Entry.getDoubleEntry("Gyro Value", 0),
+        SHOOTER_SPEED = Entry.getDoubleEntry("Shooter Target Speed", 0);
     
     public Dashboard() {};
 

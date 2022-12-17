@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import frc.robot.utils.Dashboard;
 //robot files
 import frc.robot.utils.IDMap;
 
@@ -74,5 +75,6 @@ public class Shooter extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    Dashboard.SHOOTER_SPEED.put(m_shooterSpeeds[m_shooterSpeedsPointer] * 100);
   }
 }
