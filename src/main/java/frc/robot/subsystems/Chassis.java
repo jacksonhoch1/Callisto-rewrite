@@ -116,6 +116,14 @@ public class Chassis extends SubsystemBase {
   public void setMaxOutput(double maxOutput) {
     this.differentialDrive.setMaxOutput(maxOutput);
   }
+  
+  public void shiftUp() {
+    this.differentialDrive.setMaxOutput(Constants.HIGH_SPEED);
+  }
+
+  public void shiftDown() {
+    this.differentialDrive.setMaxOutput(Constants.LOW_SPEED);
+  }
 
   //encoder methods
   public double getLeftDistanceMeters() {
@@ -139,13 +147,6 @@ public class Chassis extends SubsystemBase {
     m_rightFront.setSelectedSensorPosition(0);
   }
 
-  public void shiftUp() {
-    this.differentialDrive.setMaxOutput(Constants.HIGH_SPEED);
-  }
-
-  public void shiftDown() {
-    this.differentialDrive.setMaxOutput(Constants.LOW_SPEED);
-  }
 
   //Gyro methods
   public double getDegrees() {
