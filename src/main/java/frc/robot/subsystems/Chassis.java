@@ -18,7 +18,10 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
+import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.wpilibj.SPI;
 
 //utils
@@ -97,6 +100,9 @@ public class Chassis extends SubsystemBase {
       getRightDistanceMeters()
     );
 
+    m_field.setRobotPose(getPose());
+    m_field.setRobotPose(6.4, 3.6, Rotation2d.fromDegrees(45));
+
 
   }
 
@@ -147,6 +153,22 @@ public class Chassis extends SubsystemBase {
     m_rightFront.setSelectedSensorPosition(0);
   }
 
+  //Odometry methods
+  public Pose2d getPose() {
+    return m_odometry.getPoseMeters();
+  }
+
+  public void resetOdometry(Pose2d pose) {
+    resetEncoders();
+    m_odometry.resetPosition(pose, m_gyro.getRotation2d());
+  }
+
+  public DifferentialDriveWheelSpeeds getWheelSpeeds() {
+    return new DifferentialDriveWheelSpeeds(
+      getLeftVelocityMetersPerSecond(), 
+      getRightVelocityMetersPerSecond()
+      );
+  }
 
   //Gyro methods
   public double getDegrees() {
@@ -155,5 +177,10 @@ public class Chassis extends SubsystemBase {
 
   public void resetGyro() {
     m_gyro.reset();
+  }
+
+  public void resetSensors() {
+    resetEncoders();
+    resetGyro();
   }
 }
