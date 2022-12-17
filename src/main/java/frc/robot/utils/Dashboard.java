@@ -14,7 +14,8 @@ public class Dashboard {
     
     public static final Entry<Double>
         GYRO_POSITION = Entry.getDoubleEntry("Gyro Value", 0),
-        SHOOTER_SPEED = Entry.getDoubleEntry("Shooter Target Speed", 0);
+        SHOOTER_SPEED = Entry.getDoubleEntry("Shooter Target Speed", 0),
+        INDEXER_SPEED = Entry.getDoubleEntry("Indexer Speed", 0);
     
     public Dashboard() {};
 
