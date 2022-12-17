@@ -16,7 +16,9 @@ import com.kauailabs.navx.frc.AHRS;
 
 //wpi libraries
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.wpilibj.SPI;
 
 //utils
@@ -28,6 +30,9 @@ public class Chassis extends SubsystemBase {
   WPI_TalonFX m_leftFront, m_leftRear, m_rightFront, m_rightRear;
   DifferentialDrive differentialDrive;
   AHRS m_gyro;
+
+  private DifferentialDriveOdometry m_odometry;
+  private Field2d m_field = new Field2d();
 
   public double throttleModifier = Constants.THROTTLE_MODIFIER;
   public double turnModifier = Constants.TURN_MODIFIER;
@@ -67,12 +72,12 @@ public class Chassis extends SubsystemBase {
     m_rightRear.setInverted(TalonFXInvertType.FollowMaster);
     m_rightRear.setNeutralMode(NeutralMode.Brake);
 
+    //sensor setup
     resetEncoders();
-
-
-    //Gyro setup
     m_gyro = new AHRS(SPI.Port.kMXP);
     m_gyro.reset();
+    m_odometry = new DifferentialDriveOdometry(m_gyro.getRotation2d());
+    Dashboard.putSendable("Field", m_field);
 
     
 
@@ -85,6 +90,13 @@ public class Chassis extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
     Dashboard.GYRO_POSITION.put(getDegrees());
+
+    m_odometry.update(
+      m_gyro.getRotation2d(),
+      getLeftDistanceMeters(),
+      getRightDistanceMeters()
+    );
+
 
   }
 
@@ -103,6 +115,23 @@ public class Chassis extends SubsystemBase {
 
   public void setMaxOutput(double maxOutput) {
     this.differentialDrive.setMaxOutput(maxOutput);
+  }
+
+  //encoder methods
+  public double getLeftDistanceMeters() {
+    return m_leftFront.getSelectedSensorPosition() / Constants.COUNTS_PER_METER;
+  }
+
+  public double getRightDistanceMeters() {
+    return m_rightFront.getSelectedSensorPosition() / Constants.COUNTS_PER_METER;
+  }
+
+  public double getLeftVelocityMetersPerSecond() {
+    return m_leftFront.getSelectedSensorVelocity() / Constants.COUNTS_PER_METER;
+  }
+
+  public double getRightVelocityMetersPerSecond() {
+    return m_rightFront.getSelectedSensorVelocity() / Constants.COUNTS_PER_METER;
   }
 
   public void resetEncoders() {
